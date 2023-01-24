@@ -6,7 +6,7 @@ const About = () => {
       <div className="flex justify-center pt-10">
         <img
           className="rounded-full w-1/6"
-          src="https://media-exp1.licdn.com/dms/image/C5103AQE2YqKqzPqwJw/profile-displayphoto-shrink_800_800/0/1568095609828?e=1671667200&v=beta&t=mfMl6ZiFKTFn588oAC8v4KfQ_OotxYaDNFdegaq_cUM"
+          src="https://avatars.githubusercontent.com/u/63839002?s=400&u=3ce93efc7205c86e127ba1b98e0b5a6f48b70131&v=4"
           alt=""
         />
       </div>

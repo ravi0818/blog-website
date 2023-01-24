@@ -13,6 +13,7 @@ import UserAuthGuard from "./utils/UserAuthGuard";
 import Footer from "./components/Footer";
 import Update from "./pages/Update";
 import NewPost from "./pages/NewPost";
+import { useRef } from "react";
 function App() {
   return (
     <div className="App">
@@ -21,6 +22,7 @@ function App() {
         <div className="py-8" style={{ minHeight: "80vh" }}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/:page" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route
               path="/newpost"

@@ -28,7 +28,7 @@ const PostCard = ({ post, summary }) => {
       </div>
       <div className="flex flex-row justify-between text-sm pt-4">
         <div className="">
-          {console.log(post)}
+          {/* {console.log(post)} */}
           By <span className="text-sky-500">{post.postedBy.name}</span>
         </div>
         <div className="">{getDate(post.postedAt)}</div>

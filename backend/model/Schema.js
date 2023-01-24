@@ -29,6 +29,8 @@ const blogPostSchema = mongoose.Schema({
   views: { type: Number, default: 0 },
 });
 
+blogPostSchema.index({ title: "text" });
+
 const User = mongoose.model("User", userSchema);
 
 const BlogPost = mongoose.model("BlogPost", blogPostSchema);

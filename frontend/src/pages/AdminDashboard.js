@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Alert from "../components/Alert";
 import { UserContext } from "../Context";
 import { API_BASE_URL } from "../utils/Constants";
 
@@ -8,6 +9,7 @@ const AdminDashboard = () => {
   const [user, setUser] = useContext(UserContext);
   const [users, setUsers] = useState([]);
   const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const fetchData = async () => {
@@ -29,10 +31,13 @@ const AdminDashboard = () => {
   };
 
   const logout = () => {
-    alert("Somthing went wrong...\nPlease login again...");
-    setUser({ name: "", email: "", isLoggedIn: false });
-    localStorage.clear();
-    navigate("/");
+    setError(() => "Session expired please login again...");
+    setTimeout(() => {
+      setError(null);
+      setUser({ name: "", email: "", isLoggedIn: false });
+      localStorage.clear();
+      navigate("/");
+    }, 1000);
   };
 
   const handleApprove = async (id) => {
@@ -99,6 +104,7 @@ const AdminDashboard = () => {
   return (
     <>
       <div className="lg:grid lg:grid-cols-3 px-4 lg:px-20">
+        {error && <Alert message={error} type={"error"} />}
         <div className="lg:col-span-2 overflow-scroll">
           <table className="w-full">
             <thead>

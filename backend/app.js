@@ -17,6 +17,8 @@ const {
   getPostByIdAdmin,
   updatePost,
   deletePost,
+  getApprovedPost,
+  getSearchedPost,
 } = require("./routes/post");
 const { register } = require("./routes/register");
 const { login } = require("./routes/login");
@@ -56,6 +58,8 @@ app.get("/api/v1/topposts", getTopPost);
 app.post("/api/v1/register", register);
 app.post("/api/v1/login", login);
 
+app.get("/api/v1/posts/approved", getApprovedPost);
+app.get("/api/v1/posts/search", getSearchedPost);
 app.get("/api/v1/posts/:id", getPostById);
 app.get("/api/v1/posts/publish/:id", userAuth, publishPost);
 app.get("/api/v1/posts/unpublish/:id", userAuth, unpublishPost);

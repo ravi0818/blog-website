@@ -43,7 +43,7 @@ export const Context = ({ children }) => {
 
   return (
     <UserContext.Provider value={[user, setUser]}>
-      {console.log(user)}
+      {/* {console.log(user)} */}
       {children}
     </UserContext.Provider>
   );

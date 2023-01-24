@@ -64,6 +64,40 @@ const postImage = async (req, res, next) => {
   });
 };
 
+const getApprovedPost = async (req, res, next) => {
+  let response;
+  try {
+    const skip = req.query.skip;
+    const limit = req.query.limit;
+    response = await BlogPost.find({
+      isApproved: true,
+      isPublished: true,
+    })
+      .skip(skip)
+      .limit(limit)
+      .populate("postedBy", "name");
+    res.json(response);
+  } catch (error) {
+    next(new HttpError(error.message, error.code));
+  }
+};
+
+const getSearchedPost = async (req, res, next) => {
+  let response;
+  try {
+    const search = req.query.search;
+    console.log(search);
+    response = await BlogPost.find({
+      $text: { $search: search },
+      isApproved: true,
+      isPublished: true,
+    }).populate("postedBy", "name");
+    res.json(response);
+  } catch (error) {
+    next(new HttpError(error.message, error.code));
+  }
+};
+
 const getPost = async (req, res, next) => {
   let response;
   try {
@@ -186,6 +220,8 @@ module.exports = {
   updatePost,
   deletePost,
   postImage,
+  getApprovedPost,
+  getSearchedPost,
   getPost,
   getPostById,
   getTopPost,
